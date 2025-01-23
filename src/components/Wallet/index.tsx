@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from "react"
-import { useCards } from "../../hooks/use_cards"
-import { Pane } from "../../elements/Pane"
+
 import { Button } from "../../elements/Button"
 import { Input } from "../../elements/Input"
+import { Pane } from "../../elements/Pane"
+import { useCards } from "../../hooks/use_cards"
 import { CreditCard, DebitCard } from "../../icons"
 import type { Card } from "../../types"
 
@@ -25,11 +26,17 @@ export const Wallet = () => {
 
   return (
     <Pane size="sm" title="My Wallet">
-      <div className="card-form">
+      <form
+        className="card-form"
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleAddCard()
+        }}
+      >
         <div className="card-form--row">
-          <label>Card Number:</label>
+          <label htmlFor="number">Card Number:</label>
           <Input
-            id="name"
+            id="number"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setNumber(e.target.value)
             }
@@ -40,7 +47,7 @@ export const Wallet = () => {
         </div>
 
         <div className="card-form--row">
-          <label>CVC:</label>
+          <label htmlFor="cvc">CVC:</label>
           <Input
             id="cvc"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -53,7 +60,7 @@ export const Wallet = () => {
         </div>
 
         <div className="card-form--row">
-          <label>Expiration:</label>
+          <label htmlFor="expiration">Expiration:</label>
           <Input
             id="expiration"
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -65,45 +72,52 @@ export const Wallet = () => {
           />
         </div>
 
-        <div className="card-type">
-          <p>Card Type:</p>
+        <fieldset className="card-type">
+          <legend>Card Type:</legend>
           <div className="card-type--options">
-            <div
+            <Button
               onClick={() => setType("credit")}
-              className={`${type === "credit" ? "selected" : ""}`}
-            >
-              Credit
-            </div>
-            <div
+              aria-pressed={type === "credit"}
+              aria-label="Select Credit Card"
+              size="sm"
+              variant={type === "credit" ? "filled" : "outline"}
+              className={`card-type-button ${
+                type === "credit" ? "selected" : ""
+              }`}
+              text="Credit"
+            />
+            <Button
               onClick={() => setType("debit")}
-              className={`${type === "debit" ? "selected" : ""}`}
-            >
-              Debit
-            </div>
+              aria-pressed={type === "debit"}
+              aria-label="Select Debit Card"
+              size="sm"
+              variant={type === "debit" ? "filled" : "outline"}
+              className={`card-type-button ${
+                type === "debit" ? "selected" : ""
+              }`}
+              text="Debit"
+            />
           </div>
-        </div>
-        <Button onClick={handleAddCard} text="Add Card" />
-      </div>
+        </fieldset>
+        <Button type="submit" text="Add Card" size="md" />
+      </form>
 
-      <div className="cards-list">
-        {cards.map((card, index) => {
-          return (
-            <div className="card" key={index}>
-              <div className="card--icon">
-                {card.type === "credit" ? <CreditCard /> : <DebitCard />}
-              </div>
-
-              <div className="card--details">
-                <h2 className="card--number">{card.number}</h2>
-                <div className="flex">
-                  <p className="card--cvc">{card.cvc}</p>
-                  <p className="card--expiration">{card.expiration}</p>
-                </div>
+      <ul className="cards-list">
+        {cards.map((card, index) => (
+          <li key={index} className="card">
+            <div className="card--icon">
+              {card.type === "credit" ? <CreditCard /> : <DebitCard />}
+            </div>
+            <div className="card--details">
+              <h3 className="card--number">{card.number}</h3>
+              <div className="flex">
+                <p className="card--cvc">{card.cvc}</p>
+                <p className="card--expiration">{card.expiration}</p>
               </div>
             </div>
-          )
-        })}
-      </div>
+          </li>
+        ))}
+      </ul>
     </Pane>
   )
 }

@@ -18,3 +18,23 @@ body, html {
 ol, ul {
   list-style: none;
 }
+
+button,
+textarea,
+select,
+legend {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
