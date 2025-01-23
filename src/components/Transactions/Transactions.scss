@@ -1,1 +1,149 @@
-// add styles for "transactions"
+@use "src/global/styles/breakpoints" as *;
+
+.transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 32px;
+
+  &__balance {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    &-label {
+      color: var(--color-gray-600);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    &-amount {
+      color: var(--color-gray-800);
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+  }
+
+  &__summary {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+    padding: 2em 0 0;
+
+    @include breakpoints(from-sm) {
+      align-items: flex-start;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    .transactions__label {
+      color: var(--color-gray-600);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+    }
+
+    .transactions__amount {
+      color: var(--color-gray-800);
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__month-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .transactions__month-header {
+      color: var(--color-gray-800);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .transactions__month-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__item {
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--color-gray-100);
+    border-radius: 4px;
+    box-shadow: var(--shadow-elevation-low);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    transition: box-shadow 0.2s;
+
+    &:hover {
+      box-shadow: var(--shadow-elevation-medium);
+    }
+
+    &.negative {
+      border-left: 6px solid var(--color-red-500);
+    }
+
+    &.positive {
+      border-left: 6px solid var(--color-green-500);
+    }
+
+    &-header {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+
+      .transactions__description {
+        color: var(--color-gray-800);
+        font-size: 1.125rem;
+        font-weight: 500;
+      }
+
+      .transactions__amount {
+        font-size: 1.125rem;
+        font-weight: 600;
+
+        &.negative {
+          color: var(--color-red-500);
+        }
+
+        &.positive {
+          color: var(--color-green-500);
+        }
+      }
+    }
+
+    &-footer {
+      color: var(--color-gray-600);
+      display: flex;
+      font-size: 12px;
+      justify-content: space-between;
+
+      .transactions__category {
+        text-transform: uppercase;
+      }
+
+      .transactions__date {
+        font-style: italic;
+        text-align: right;
+      }
+    }
+  }
+}

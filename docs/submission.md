@@ -22,8 +22,14 @@ This addition aligns with the app's design principles and provides a starting po
 [Click to View Pull Request on GitHub](https://github.com/shawncothran/react-ts-vite-budget/pull/2)
 
 ### Task 3: Refactor to add visual hierarchy
-<!-- add task description here -->
+This task focused on enhancing the `Transactions` component by:
 
+- Transactions are now visually organized under a header for each month, improving UX, lovability and hierarchy.
+- Added structured spacing, typography adjustments, and shadows for visual distinction between sections and items. **The hover state is built for interactivity, otherwise I wouldn't use a pointer cursor or shadow**
+- Applied design tokens for consistency and ensured the component looks modern and aligns with the existing app aesthetic. **I don't love this design, as it feels dated, but it is relatively conservative and highly functional. Didn't want to burn too much time on it**
+- Transaction dates are formatted in a more human format.
+
+[Click to View Pull Request on GitHub](https://github.com/shawncothran/react-ts-vite-budget/pull/3)
 
 ### Notes:
 <!-- space to ask questions or provide any additional details while going through this process -->

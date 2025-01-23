@@ -93,11 +93,16 @@ export const Budget = () => {
           </div>
           <div className="category-form__actions">
             <Button
+              className="category-form__cancel-button"
               onClick={() => setIsFormVisible(false)}
               text="Cancel"
               variant="outline"
             />
-            <Button type="submit" text="Add Category" />
+            <Button
+              className="category-form__submit-button"
+              type="submit"
+              text="Add Category"
+            />
           </div>
         </form>
       ) : (
