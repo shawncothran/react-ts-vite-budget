@@ -9,8 +9,17 @@ This task mostly aims to make all the user interaction accessible via keyboard. 
 > 🗣 **Note:** Each `Task` will live in it's own PR that will be merged into `main` to easily distinguish code changes for each specific task.
 
 ### Task 2: Build UI based on wireframe
-<!-- add task description here -->
+This one had me create a new `Budget` feature inspired by the provided wireframe, which includes:
 
+- An accessible **budget summary** section displaying key metrics like income, allocated, and remaining budget.
+- A dynamic **category list** integrated with a new `useCategories` hook for data management.
+- A "New Category" button that toggles a form for creating custom budget categories with name, limit, and icon selection.
+- Visual consistency by leveraging existing design tokens, typography, and layout breakpoints.
+- Proper semantic and accessible markup with labels, aria attributes, and meaningful focus styles for better usability.
+
+This addition aligns with the app's design principles and provides a starting point for future enhancements.
+
+[Click to View Pull Request on GitHub](https://github.com/shawncothran/react-ts-vite-budget/pull/2)
 
 ### Task 3: Refactor to add visual hierarchy
 <!-- add task description here -->

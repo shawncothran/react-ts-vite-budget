@@ -22,14 +22,17 @@ ol, ul {
 button,
 textarea,
 select,
+h2,
+div,
+span,
 legend {
+  background: none;
+  border: none;
+  color: inherit;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
-  color: inherit;
-  background: none;
-  border: none;
   padding: 0;
 }
 
