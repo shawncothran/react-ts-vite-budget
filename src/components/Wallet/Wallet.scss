@@ -19,9 +19,10 @@
 }
 
 .card-type {
+  border: none;
   margin: 1em 0;
 
-  p {
+  p, legend {
     color: var(--color-gray-600);
     margin-bottom: 0.5em;
   }
@@ -29,7 +30,7 @@
   .card-type--options {
     display: flex;
 
-    div {
+    .card-type-button {
       background: var(--color-gray-200);
       color: var(--color-gray-500);
       cursor: pointer;
@@ -43,9 +44,18 @@
         border-radius: 0 8px 8px 0;
       }
 
+      &:focus {
+        outline: 2px solid var(--color-blue-500);
+        outline-offset: 2px;
+      }
+
       &.selected {
         background: var(--color-green-600);
         color: #fff;
+      }
+
+      &:hover {
+        background: var(--color-gray-300);
       }
     }
   }
@@ -76,7 +86,7 @@
     display: flex;
     justify-content: center;
     padding: 0 0.75em;
-    
+
     svg {
       display: block;
       height: 24px;
@@ -95,14 +105,13 @@
     margin-bottom: 0.5em;
   }
 
-  .card--cvc {
+  .card--cvc,
+  .card--expiration {
     color: var(--color-gray-400);
     font-size: 14px;
   }
 
   .card--expiration {
-    color: var(--color-gray-400);
-    font-size: 14px;
     margin-left: 0.5em;
   }
 }
