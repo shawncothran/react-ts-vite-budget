@@ -10,18 +10,43 @@ export const Transactions = () => {
   return (
     <Pane size="lg" title="Transactions">
       <div className="transactions">
-        <p>Balance:</p>
-        <h2>${balance.toFixed(2)}</h2>
-        {transactions.map((transaction, index) => {
-          return (
-            <div style={{ marginBottom: 8 }} key={index}>
-              <div>{transaction.description}</div>
-              <div>{transaction.amount}</div>
-              <div>{transaction.category}</div>
-              <div>{transaction.date}</div>
-            </div>
-          )
-        })}
+        <section className="transactions__summary">
+          <h2 className="transactions__label">Current Balance</h2>
+          <span className="transactions__amount">
+            ${balance.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+          </span>
+        </section>
+        <ul className="transactions__list">
+          {transactions.map((transaction) => (
+            <li
+              key={transaction.id}
+              className={`transactions__item ${
+                transaction.amount < 0 ? "negative" : "positive"
+              }`}
+            >
+              <div className="transactions__indicator"></div>
+              <div className="transactions__item-left">
+                <span className="transactions__description">
+                  {transaction.description}
+                </span>
+                <span className="transactions__category">
+                  {transaction.category}
+                </span>
+              </div>
+              <div className="transactions__item-right">
+                <span
+                  className={`transactions__amount ${
+                    transaction.amount < 0 ? "negative" : "positive"
+                  }`}
+                >
+                  {transaction.amount < 0 ? "-" : "+"}$
+                  {Math.abs(transaction.amount).toFixed(2)}
+                </span>
+                <span className="transactions__date">{transaction.date}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </Pane>
   )
