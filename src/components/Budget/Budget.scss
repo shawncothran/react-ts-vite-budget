@@ -119,6 +119,7 @@
 
         .budget__category-icon {
           @extend %icon;
+
           background-color: var(--color-gray-100);
           padding: 14px;
         }
@@ -140,6 +141,7 @@
 
     .budget__new-category {
       @extend %icon;
+
       align-items: center;
       background-color: #fff;
       border: 2px solid var(--color-blue-300);
@@ -209,15 +211,17 @@
     flex-wrap: wrap;
     gap: 8px;
 
-    button:hover {
-      background-color: var(--color-gray-300);
-    }
-
     button {
       @extend %icon;
+
       background-color: var(--color-gray-200);
       cursor: pointer;
       padding: 15px 13px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: var(--color-gray-300);
+      }
 
       &.selected {
         background-color: var(--color-blue-200);
@@ -232,23 +236,35 @@
     justify-content: space-between;
     padding-top: 12px;
 
-    button {
+    .category-form__cancel-button {
+      background: #fff;
+      border: 1px solid var(--color-gray-300);
       border-radius: 4px;
+      color: var(--color-gray-600);
       cursor: pointer;
       flex: 1;
       justify-content: center;
       padding: 14px 16px;
+      transition: background-color 0.2s;
 
-      &[type="button"] {
-        background: #fff;
-        border: 1px solid var(--color-gray-300);
-        color: var(--color-gray-600);
+      &:hover {
+        background-color: var(--color-gray-300);
       }
+    }
 
-      &[type="submit"] {
-        background: var(--color-blue-600);
-        border: none;
-        color: #fff;
+    .category-form__submit-button {
+      background: var(--color-blue-600);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      flex: 1;
+      justify-content: center;
+      padding: 14px 16px;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: var(--color-blue-500);
       }
     }
   }
